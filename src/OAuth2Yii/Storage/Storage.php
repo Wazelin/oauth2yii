@@ -1,9 +1,6 @@
 <?php
 namespace OAuth2Yii\Storage;
 
-use \Yii as Yii;
-use \CException as CException;
-
 /**
  * Base class for all server storages
  *
@@ -27,7 +24,7 @@ abstract class Storage
     /**
      * @return \OAuth2Yii\Component\ServerComponent the server component
      */
-    public function getOauth2()
+    public function getOAuth2()
     {
         return $this->_server;
     }

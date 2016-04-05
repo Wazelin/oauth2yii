@@ -42,7 +42,7 @@ class AuthorizationCode extends DbStorage implements AuthorizationCodeInterface
     public function getAuthorizationCode($code)
     {
         $sql = sprintf(
-            'SELECT client_id,user_id,expires,redirect_uri,scope FROM %s WHERE code=:code',
+            'SELECT client_id,user_id,expires,redirect_uri,scope FROM %s WHERE authorization_code=:code',
             $this->getTableName()
         );
         $result = $this->getDb()->createCommand($sql)->queryRow(true, array(':code'=>$code));
@@ -81,13 +81,11 @@ class AuthorizationCode extends DbStorage implements AuthorizationCodeInterface
         if($this->getAuthorizationCode($code)===null) {
             $values['authorization_code'] = $code;
             return (bool)$command->insert($this->getTableName(), $values);
-        } else {
-            return (bool)$command->update($this->getTableName(), $values, 'authorization_code=:code',array(
-                ':code' => $code,
-            ));
         }
 
-        return (bool)$this->getDb()->createCommand($sql)->execute($values);
+        return (bool)$command->update($this->getTableName(), $values, 'authorization_code=:code',array(
+            ':code' => $code,
+        ));
     }
 
     /**
