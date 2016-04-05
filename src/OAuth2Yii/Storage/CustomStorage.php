@@ -1,7 +1,7 @@
 <?php
 namespace OAuth2Yii\Storage;
 
-use \Yii as Yii;
+use OAuth2Yii\Component\ServerComponent;
 use \CException as CException;
 
 /**
@@ -19,12 +19,12 @@ abstract class CustomStorage extends Storage
     protected abstract function getInterface();
 
     /**
-     * @param \OAuth2Yii\Component\ServerComponent $server the server component
+     * @param ServerComponent $server the server component
      * @param string $className name of the custom storage class
      *
      * @throws \CException if the specified class doesn't implement the correct interface
      */
-    public function __construct(\OAuth2Yii\Component\ServerComponent $server, $className)
+    public function __construct(ServerComponent $server, $className)
     {
         parent::__construct($server);
         $this->_storage = new $className;

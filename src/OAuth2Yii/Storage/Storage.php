@@ -1,6 +1,8 @@
 <?php
 namespace OAuth2Yii\Storage;
 
+use OAuth2Yii\Component\ServerComponent;
+
 /**
  * Base class for all server storages
  *
@@ -9,20 +11,20 @@ namespace OAuth2Yii\Storage;
 abstract class Storage
 {
     /**
-     * @var \OAuth2Yii\Component\ServerComponent the server component
+     * @var ServerComponent the server component
      */
     protected $_oauth2;
 
     /**
-     * @var \OAuth2Yii\Component\ServerComponent the server component
+     * @var ServerComponent the server component
      */
-    public function __construct(\OAuth2Yii\Component\ServerComponent $server)
+    public function __construct(ServerComponent $server)
     {
         $this->_server = $server;
     }
 
     /**
-     * @return \OAuth2Yii\Component\ServerComponent the server component
+     * @return ServerComponent the server component
      */
     public function getOAuth2()
     {

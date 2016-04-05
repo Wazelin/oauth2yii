@@ -1,8 +1,8 @@
 <?php
 namespace OAuth2Yii\Component;
 
-use \Yii;
-use \CComponent;
+use CComponent;
+use Yii;
 
 /**
  * AccessToken
@@ -102,9 +102,9 @@ class AccessToken extends CComponent
     }
 
     /**
-     * @param string $response from a token request
-     * @param \OAuth2Yii\Provider\Provider
-     * @param \CUserIdentity|null if provided, any error will be set on this identity
+     * @param string                       $response from a token request
+     * @param \OAuth2Yii\Provider\Provider $provider
+     * @param \CUserIdentity|null          $identity if provided, any error will be set on this identity
      * @return null|\OAuth2Yii\Component\AccessToken the access token object or null on failure
      */
     public static function parseResponse($response, $provider, $identity=null)

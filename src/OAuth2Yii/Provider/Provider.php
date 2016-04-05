@@ -8,7 +8,6 @@ use \OAuth2Yii\Component\AccessToken;
 
 use \Yii;
 use \CComponent;
-use \CException;
 
 abstract class Provider extends CComponent
 {
@@ -99,6 +98,8 @@ abstract class Provider extends CComponent
         if($token!==null && (!$token->getIsExpired() || $token->refresh($id, $this))) {
             return $token;
         }
+
+        return null;
     }
 
     /**

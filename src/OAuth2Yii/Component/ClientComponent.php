@@ -5,7 +5,6 @@ use \OAuth2Yii\Storage;
 
 use \Yii;
 use \CApplicationComponent;
-use \CExcpetion;
 
 /**
  * ClientComponent

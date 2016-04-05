@@ -1,8 +1,6 @@
 <?php
 namespace OAuth2Yii\Interfaces;
 
-use OAuth2Yii\Component\AccessToken;
-
 /**
  * ClientStorage
  *

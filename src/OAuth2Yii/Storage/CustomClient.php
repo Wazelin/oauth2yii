@@ -81,4 +81,14 @@ class CustomClient extends CustomStorage implements ClientInterface, ClientCrede
             return $storage->verifySecret($client, $client_secret);
         }
     }
+
+    public function isPublicClient($client_id)
+    {
+        throw new \CException(501);
+    }
+
+    public function getClientScope($client_id)
+    {
+        throw new \CException(501);
+    }
 }
