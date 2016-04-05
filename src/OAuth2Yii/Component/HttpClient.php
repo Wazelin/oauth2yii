@@ -1,7 +1,6 @@
 <?php
 namespace OAuth2Yii\Component;
 
-use \Yii;
 use \CComponent;
 
 class HttpClient extends CComponent

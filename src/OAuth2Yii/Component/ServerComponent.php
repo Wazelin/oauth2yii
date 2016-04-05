@@ -1,6 +1,9 @@
 <?php
 namespace OAuth2Yii\Component;
 
+use OAuth2\Request;
+use OAuth2\Response;
+use OAuth2\Server;
 use \OAuth2Yii\Storage;
 
 use \Yii;
@@ -119,12 +122,12 @@ class ServerComponent extends CApplicationComponent
     public $defaultScope;
 
     /**
-     * @var \OAuth2\Server
+     * @var Server
      */
     protected $_server;
 
     /**
-     * @var \OAuth2\Request
+     * @var Request
      */
     protected $_request;
 
@@ -158,7 +161,7 @@ class ServerComponent extends CApplicationComponent
     {
         $this->initStorage();
 
-        $this->_server = new \OAuth2\Server($this->getStorages(),array(
+        $this->_server = new Server($this->getStorages(),array(
             'access_lifetime'               => $this->accessTokenLifetime,
             'enforce_state'                 => $this->enforceState,
             'require_exact_redirect_uri'    => $this->exactRedirectUri,
@@ -171,7 +174,7 @@ class ServerComponent extends CApplicationComponent
      */
     public function checkAccess($scope=null)
     {
-        $response = new \OAuth2\Response;
+        $response = new Response;
 
         YII_DEBUG && Yii::trace('Checking permission'.($scope ? " for scope '$scope'": ''),'oauth2.servercomponent');
 
@@ -187,7 +190,7 @@ class ServerComponent extends CApplicationComponent
     }
 
     /**
-     * @return \OAuth2\Server object
+     * @return Server object
      */
     public function getServer()
     {
@@ -256,12 +259,12 @@ class ServerComponent extends CApplicationComponent
     }
 
     /**
-     * @return \OAuth2\Request the request object as used by OAuth2-PHP
+     * @return Request the request object as used by OAuth2-PHP
      */
     public function getRequest()
     {
         if($this->_request===null) {
-            $this->_request = \OAuth2\Request::createFromGlobals();
+            $this->_request = Request::createFromGlobals();
         }
         return $this->_request;
     }

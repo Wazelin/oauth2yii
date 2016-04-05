@@ -51,6 +51,7 @@ class Client extends DbStorage implements ClientInterface, ClientCredentialsInte
      *
      * @param string $client_id
      * @param string $grant_type as defined by RFC 6749
+     * @return bool
      */
     public function checkRestrictedGrantType($client_id, $grant_type)
     {
@@ -77,5 +78,15 @@ class Client extends DbStorage implements ClientInterface, ClientCredentialsInte
         $hash = $this->getDb()->createCommand($sql)->queryScalar(array(':id'=>$client_id));
 
         return md5($client_secret) === $hash;
+    }
+
+    public function isPublicClient($client_id)
+    {
+        throw new \CException(501);
+    }
+
+    public function getClientScope($client_id)
+    {
+        throw new \CException(501);
     }
 }

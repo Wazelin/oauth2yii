@@ -92,6 +92,7 @@ class AuthorizationCode extends DbStorage implements AuthorizationCodeInterface
      * Required by OAuth2\Storage\AuthorizationCodeInterfaces
      *
      * @param mixed $code to expire
+     * @return int
      */
     public function expireAuthorizationCode($code)
     {

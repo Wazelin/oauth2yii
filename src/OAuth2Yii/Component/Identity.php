@@ -1,7 +1,6 @@
 <?php
 namespace OAuth2Yii\Component;
 
-use \Yii;
 use \CUserIdentity;
 
 /**
@@ -21,7 +20,7 @@ class Identity extends CUserIdentity
     /**
      * Construct the identity.
      *
-     * @param \OAuth2Yii\Component\Identity $provider provider for this identity
+     * @param \OAuth2Yii\Provider\Provider $provider provider for this identity
      * @param string $username
      * @param string $password
      */

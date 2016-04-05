@@ -1,6 +1,7 @@
 <?php
 namespace OAuth2Yii\Storage;
 
+use OAuth2Yii\Component\ServerComponent;
 use \Yii as Yii;
 use \CException as CException;
 
@@ -27,12 +28,12 @@ abstract class DbStorage extends Storage
     protected abstract function createTable();
 
     /**
-     * @param \OAuth2Yii\Component\ServerComponent $server the server component
+     * @param ServerComponent $server the server component
      * @param string $db id of the CDbConnection component
      *
      * @throws \CException if the component cannot be found
      */
-    public function __construct(\OAuth2Yii\Component\ServerComponent $server, $db)
+    public function __construct(ServerComponent $server, $db)
     {
         parent::__construct($server);
 

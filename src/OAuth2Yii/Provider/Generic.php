@@ -1,9 +1,6 @@
 <?php
 namespace OAuth2Yii\Provider;
 
-use \Yii;
-use \CComponent;
-
 class Generic extends Provider
 {
     public $authorizationUrl;

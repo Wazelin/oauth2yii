@@ -4,7 +4,6 @@ namespace OAuth2Yii\Component;
 use \Yii;
 use \CWebUser;
 use \CException;
-use \CHttpCookie;
 
 /**
  * WebUser
@@ -19,7 +18,7 @@ class WebUser extends CWebUser
     public $oauth2 = 'oauth2';
 
     /**
-     * @var CActiveRecord the user record of the currently logged in user
+     * @var \CActiveRecord the user record of the currently logged in user
      */
     protected $_model = false;
 
@@ -38,6 +37,7 @@ class WebUser extends CWebUser
      */
     public function init()
     {
+        /** @var ServerComponent $oauth2 */
         $oauth2 = Yii::app()->getComponent($this->oauth2);
 
         if($oauth2===null) {
@@ -77,7 +77,7 @@ class WebUser extends CWebUser
     }
 
     /**
-     * @var bool whether the user authenticated successfully as OAuth2 user
+     * @return bool whether the user authenticated successfully as OAuth2 user
      */
     public function getIsOAuth2User()
     {
@@ -85,7 +85,7 @@ class WebUser extends CWebUser
     }
 
     /**
-     * @var bool whether the user authenticated successfully as OAuth2 client
+     * @return bool whether the user authenticated successfully as OAuth2 client
      */
     public function getIsOAuth2Client()
     {
