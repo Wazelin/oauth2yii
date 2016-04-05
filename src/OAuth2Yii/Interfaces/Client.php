@@ -37,4 +37,10 @@ interface Client
      * @return bool whether the secret is valid for this client
      */
     public function verifySecret($client, $client_secret);
+
+    /**
+     * @param array|object $client the client data retrieved from queryClient()
+     * @return string|null
+     */
+    public function scopes($client);
 }

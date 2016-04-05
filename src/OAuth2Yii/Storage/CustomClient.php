@@ -1,13 +1,15 @@
 <?php
 namespace OAuth2Yii\Storage;
 
-use \OAuth2\Storage\ClientInterface;
-use \OAuth2\Storage\ClientCredentialsInterface;
+use OAuth2\Storage\ClientCredentialsInterface;
+use OAuth2\Storage\ClientInterface;
 
 /**
  * Server storage for client data
  *
  * @author Michael Härtl <haertl.mike@gmail.com>
+ *
+ * @method \OAuth2Yii\Interfaces\Client getStorage()
  */
 class CustomClient extends CustomStorage implements ClientInterface, ClientCredentialsInterface
 {
@@ -89,6 +91,13 @@ class CustomClient extends CustomStorage implements ClientInterface, ClientCrede
 
     public function getClientScope($client_id)
     {
-        throw new \CException(501);
+        $storage = $this->getStorage();
+        $client  = $storage->queryClient($client_id);
+
+        if (isset($client)) {
+            return $storage->scopes($client);
+        }
+        
+        return null;
     }
 }
