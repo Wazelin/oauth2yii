@@ -1,8 +1,8 @@
 <?php
 namespace OAuth2Yii\Storage;
 
-use \OAuth2\Storage\ClientInterface;
-use \OAuth2\Storage\ClientCredentialsInterface;
+use OAuth2\Storage\ClientCredentialsInterface;
+use OAuth2\Storage\ClientInterface;
 
 /**
  * Server storage for client data
@@ -28,6 +28,7 @@ class Client extends DbStorage implements ClientInterface, ClientCredentialsInte
             'client_id'     => 'string NOT NULL PRIMARY KEY',
             'client_secret' => 'string NOT NULL',
             'redirect_uri'  => 'text NOT NULL',
+            'scope'         => 'string',
         ));
     }
 
@@ -87,6 +88,10 @@ class Client extends DbStorage implements ClientInterface, ClientCredentialsInte
 
     public function getClientScope($client_id)
     {
-        throw new \CException(501);
+        $sql = sprintf(
+            'SELECT scope FROM %s WHERE client_id = :id',
+            $this->getTableName()
+        );
+        return $this->getDb()->createCommand($sql)->queryScalar(array(':id' => $client_id));
     }
 }

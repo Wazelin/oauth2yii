@@ -7,6 +7,8 @@ use \OAuth2\Storage\UserCredentialsInterface;
  * Server storage for user data
  *
  * @author Michael Härtl <haertl.mike@gmail.com>
+ *
+ * @method \OAuth2Yii\Interfaces\User getStorage()
  */
 class CustomUser extends CustomStorage implements UserCredentialsInterface
 {
